@@ -35,7 +35,7 @@
                 <button type="submit" class="btn btn-link"><a href="/list">戻る</a></button>
                    <div class="card">
                     <div class="card-body">
-                        <label>Title</label>：<label>{{ $show['title'] }}</label>
+                        <label>件名</label>：<label>{{ $show['title'] }}</label>
                         <hr>
                         <p>お問い合わせ内容</p>
                         <p>{{ $show['content'] }}</p>

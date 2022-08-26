@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="{{ asset('css/style2.css') }}" type="text/css">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -20,7 +21,6 @@
 
 <body>
     <div class="container">
-        <div class="center-block" style="width: 1200px;">
             <form action="{{ action('App\Http\Controllers\FormController@create') }}" method="POST">
                 @csrf
                 <div class="form-group">
@@ -44,7 +44,6 @@
                 <button class="btn btn-success" onclick="alertFunction1()"> 送信 </button>
             </form>
             <button><a href="/">戻る</a></button>
-          </div>
     </div>
 </body>
 </html>

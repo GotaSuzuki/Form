@@ -9,7 +9,7 @@ use Auth;
 class FormController extends Controller
 {
     public function list(){
-        $lists = Form::where('status', 1)->get();
+        $lists = Form::where('status', 1)->simplePaginate(5);
         if( Auth::check() ){
             return view('list', compact('lists'));
         }else{
