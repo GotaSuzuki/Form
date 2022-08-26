@@ -45,8 +45,10 @@ class MailingController extends Controller
        /* Send mail using sendgrid instance */
        $response = $sendgrid->send($email);
        if ($response->statusCode() == 202) {
-           return back()->with(['success' => "E-mails successfully sent out!!"]);
+           return back()->with(['success' => "送信しました"]);
        }
+       $show->status = true;
+       $show->save();
        return back()->withErrors(json_decode($response->body())->errors);
    }
 }

@@ -9,7 +9,7 @@ use Auth;
 class FormController extends Controller
 {
     public function list(){
-        $lists = Form::get();
+        $lists = Form::where('status', 1)->get();
         if( Auth::check() ){
             return view('list', compact('lists'));
         }else{
