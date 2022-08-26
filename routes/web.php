@@ -18,6 +18,7 @@ Route::get('/form', 'App\Http\Controllers\FormController@form')->name('form');
 Route::post('/form', 'App\Http\Controllers\FormController@create')->name('create');
 Route::get('/detail/{id}', 'App\Http\Controllers\FormController@detail')->name('detail');
 Route::get('/list', 'App\Http\Controllers\FormController@list')->name('list');
+Route::post('/list', 'App\Http\Controllers\FormController@remove')->name('remove');
 
 Route::get('/reply/{id}', 'App\Http\Controllers\MailingController@reply')->name('reply');
 Route::post('/sendmail', 'App\Http\Controllers\MailingController@sendMail');

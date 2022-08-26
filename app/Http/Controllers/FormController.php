@@ -10,8 +10,9 @@ class FormController extends Controller
 {
     public function list(){
         $lists = Form::where('status', 1)->simplePaginate(5);
+        $detas = Form::whereNotNull('id')->simplePaginate(5);
         if( Auth::check() ){
-            return view('list', compact('lists'));
+            return view('list', compact('lists', 'detas'));
         }else{
             redirect('index');
         }
@@ -39,6 +40,20 @@ class FormController extends Controller
     public function detail($id){
         $detail = Form::find($id);
         $show = Form::where('id', $id)->first();
-        return view('detail', compact('detail', 'show'));
+        $texts=Form::withTrashed()->get();
+        return view('detail', compact('detail', 'show', 'texts'));
     }
+
+    public function delete($id) {
+        // $del = Form::find($request->id);
+        // $del->delete();
+        // Form::table('forms')->where('id', $request->id)->delete();
+        // Form::find($id)->delete();
+        // return redirect()->to('list');
+      }
+
+      public function remove(Request $request){
+        Form::table('forms')->where('id', $request->id)->delete();
+        return redirect('/');
+      }
 }

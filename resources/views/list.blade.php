@@ -19,9 +19,18 @@
 <body>
     <div class="container">
         <div class="mx-auto" style="width: 500px;">
-            @foreach ($lists as $list)
-        <p><a href="{{ action('App\Http\Controllers\MailingController@reply', $list->id) }}" class="link-info">{{ $list['title'] }}</a></p>
-        <p>{!! nl2br(e(Str::limit($list->content, 30))) !!}</p>
+    @foreach ($detas as $deta)
+                <div class="row">
+                    <div class="col-6"><a href="{{ action('App\Http\Controllers\MailingController@reply', $deta->id) }}" class="link-info">{{ $deta['title'] }}</a></div>
+                <div class="col-6">
+                    <form action="remove" method="POST">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$deta->id}}">
+                        <input type="submit" value="削除する">
+                    </form>
+                </div>
+                </div>
+                <p>{!! nl2br(e(Str::limit($deta->content, 30))) !!}</p>
         <hr>
     @endforeach
     {{ $lists->links() }}
